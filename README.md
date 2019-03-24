@@ -7,3 +7,16 @@ When orders service receives order/create api request, it
 - payments service mock-process the payment and publish either 'orderConfirmed' or 'orderCancelled' message to amqp
 - orders orchestrator receives the message of 'orderConfirmed' and updates the order status in mongodb
 - 3 seconds after 'confirmed' status update, it updates the order status to 'delivered'
+
+# To run app
+- In PC, install and run mongodb server and rabbitmq server
+- In the project, do: 
+    - yarn install
+    - cd orders-app
+    - node app.js
+    - cd payments-app
+    - node app.js
+- Use Postman to test the apis
+    - /order/create
+    - /order/cancel
+    - /order/status/:id
